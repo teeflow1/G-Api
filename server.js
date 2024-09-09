@@ -24,14 +24,21 @@ app.get('/about', (req, res) => {
 let posts = [
     {id:1, title: "Post one"},
     {id:2, title: "Post two"},
-    {id:1, title: "Post three"},
+    {id:3, title: "Post three"},
 
 ]
 
 
-app.get('/api/post',  (req, res)=>{
+app.get('/api/posts/',  (req, res)=>{
     res.json(posts)
 })
+
+app.get('/api/posts/:id',  (req, res)=>{
+    const id = parseInt(req.params.id);
+    res.json(posts.filter((post) => post.id === id));
+})
    
+
+
 
 app.listen(port, ()  => console.log(`server is listening on port ${port}`))
