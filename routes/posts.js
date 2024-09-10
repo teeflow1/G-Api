@@ -26,6 +26,7 @@ router.get('/',  (req, res)=>{
 
 router.get('/:id',  (req, res)=>{
     const id = parseInt(req.params.id);
+    
     const post = posts.find((post) => post.id === id);
 
     if(!post){
