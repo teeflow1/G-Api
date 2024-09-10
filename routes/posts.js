@@ -29,7 +29,7 @@ router.get('/:id',  (req, res)=>{
     const post = posts.find((post) => post.id === id);
 
     if(!post){
-        return res.status(400).json({mes: `Post with the id of ${id} does not exist`});
+        return res.status(400).json({mes: `Post with the id of ${id} was not found`});
     }
         res.status(200).json(post)
 
