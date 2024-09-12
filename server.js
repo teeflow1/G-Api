@@ -21,14 +21,16 @@ app.get('/about', (req, res) => {
     */
 
 
-//Routes
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+//Routers
 app.use('/api/posts', posts);
 
 
 // Body Parser middleware
 
-app.use(express.json());
-app.use(express.urlencoded({extended:false}));
+
 
 
 app.listen(port, ()  => console.log(`server is listening on port ${port}`))
