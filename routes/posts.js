@@ -32,9 +32,10 @@ router.get('/:id',  (req, res)=>{
     const post = posts.find((post) => post.id === id);
 
     if(!post){
+
         return res.status(400).json({mes: `Post with the id of ${id} was not found`});
     }
-        res.status(200).json(posts)
+        res.status(200).json(post)
 
     //res.json(posts.filter((post) => post.id === id));
 })
@@ -43,18 +44,18 @@ router.get('/:id',  (req, res)=>{
 router.post('/', (req, res) =>{
 
 
-    const newPost = {
+    const myPost = {
         id: posts.length + 1,
         title: req.body.title
     };
 
-    if (!newPost.title) {
+    if (!myPost.title) {
 
         return res.status(400).json({msg: 'Please include a title'})
 
     }
 
-    posts.push(newPost);
+    posts.push(myPost);
     res.status(201).json(posts);
 
 })
