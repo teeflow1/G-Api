@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import posts from './routes/posts.js';
 const port = process.env.PORT || 5000;
+import logger from './middleware/logger.js'
 
 const app = express();
 
@@ -20,15 +21,19 @@ app.get('/about', (req, res) => {
 })
     */
 
-
+// Body Parser middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+//Logger Middleware
+
+app.use(logger)
 
 //Routers
 app.use('/api/posts', posts);
 
 
-// Body Parser middleware
+
 
 
 

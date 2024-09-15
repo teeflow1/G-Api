@@ -15,7 +15,8 @@ let posts = [
 ]
 
 
-router.get('/',  (req, res)=>{
+
+router.get('/', (req, res)=>{
 
     const limit = parseInt(req.query.limit);
 
