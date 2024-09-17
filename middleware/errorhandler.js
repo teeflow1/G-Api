@@ -1,13 +1,13 @@
 import colors from 'colors'
 
 
-const ErrorHandler = (err, req, res, next) => {
+const errorHandler = (err, req, res, next) => {
 
     if (err.status) {
-        res.status(err.status).json({msg: err.message})
+        res.status(err.status).json({message: err.message})
     } else {
     
-        res.status(404).json({msg: err.message})
+        res.status(404).json({message: err.message})
 
     };
 
@@ -15,4 +15,4 @@ const ErrorHandler = (err, req, res, next) => {
 ;
 }
 
-export default ErrorHandler
+export default errorHandler
