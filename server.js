@@ -4,6 +4,7 @@ import posts from './routes/posts.js';
 const port = process.env.PORT || 5000;
 import logger from './middleware/logger.js'
 import errorHandler from './middleware/errorhandler.js';
+import notFound from './middleware/notFound.js';
 
 const app = express();
 
@@ -32,11 +33,14 @@ app.use(logger)
 
 //Routers
 app.use('/api/posts', posts);
+app.use(notFound);
+
+
 
 
 //Error Handler
-
 app.use(errorHandler);
+
 
 
 

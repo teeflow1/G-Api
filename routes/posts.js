@@ -16,7 +16,7 @@ let posts = [
 
 
 
-router.get('/', (req, res)=>{
+router.get('/', (req, res, next)=>{
 
     const limit = parseInt(req.query.limit);
 
@@ -46,7 +46,7 @@ router.get('/:id',  (req, res, next)=>{
 })
 
 // Post request
-router.post('/', (req, res) =>{
+router.post('/', (req, res, next) =>{
 
 
     const myPost = {
@@ -56,7 +56,10 @@ router.post('/', (req, res) =>{
 
     if (!myPost.title) {
 
-        return res.status(400).json({msg: 'Please include a title'})
+        
+        const error = new Error(`Please include Title`)
+        error.status = 400;
+        return next(error);
 
     }
 
@@ -67,7 +70,7 @@ router.post('/', (req, res) =>{
 
 
 // Update Post
-router.put('/:id', (req, res) => {
+router.put('/:id', (req, res, next) => {
 
     const id = parseInt(req.params.id);
 
@@ -75,7 +78,9 @@ router.put('/:id', (req, res) => {
 
 
     if (!post) {
-        return res.status(404).json({msg: `Post with the id of ${id} was not found`})
+        const error = new Error(`A Post with the id of ${id} was not found`)
+        error.status = 300;
+        return next(error);
     }
 
     post.title = req.body.title;
@@ -86,7 +91,7 @@ router.put('/:id', (req, res) => {
 
 // Delete Post
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', (req, res, next) => {
 
     const id = parseInt(req.params.id);
 
@@ -94,7 +99,9 @@ router.delete('/:id', (req, res) => {
 
 
     if (!post) {
-        return res.status(404).json({msg: `Post with the id of ${id} was not found`})
+        const error = new Error(`A Post with the id of ${id} was not found`)
+        error.status = 300;
+        return next(error);
     }
 
     posts = posts.filter((post) => post.id !== id);
