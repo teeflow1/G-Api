@@ -33,12 +33,9 @@ app.use(logger)
 
 //Routers
 app.use('/api/posts', posts);
-app.use(notFound);
-
-
-
 
 //Error Handler
+app.use(notFound);
 app.use(errorHandler);
 
 
