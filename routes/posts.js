@@ -1,5 +1,5 @@
 import express from 'express';
-import {getPost, getPosts, createPost, updatePost, deletePost} from '../controllers/newController.js'
+import {getPost, getPosts, CreatePost, updatePost, deletePost} from '../controllers/newController.js'
 const router = express.Router();
 
 
@@ -11,7 +11,7 @@ router.get('/', getPost);
 router.get('/:id',  getPosts);
 
 // Post request
-router.post('/', createPost);
+router.post('/', CreatePost);
 
 
 // Update Post
