@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 import posts from './routes/posts.js';
-const port = process.env.STAT || 5000;
+const port = process.env.STAT || 4000;
 import logger from './middleware/logger.js'
 import errorHandler from './middleware/errorhandler.js';
 import notFound from './middleware/notFound.js';
