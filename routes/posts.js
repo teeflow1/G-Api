@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 router.get('/', getPost);
-;
+
 
 router.get('/:id',  getPosts);
 
