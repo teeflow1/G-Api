@@ -36,7 +36,7 @@ export const getPosts = (req, res, next)=>{
 
     if(!post){
 
-        const error = new Error(`A Post with the id of ${id} was not found`)
+        const error = new Error(` Post with the id of ${id} was not found `)
         error.status = 300;
         return next(error);
 
@@ -59,7 +59,7 @@ export const CreatePost = (req, res, next) =>{
     if (!myPost.title) {
 
         
-        const error = new Error(`Please include Title`)
+        const error = new Error(`Please include a Title`)
         error.status = 400;
         return next(error);
 
